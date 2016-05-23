@@ -1,0 +1,23 @@
+
+version: '2'
+
+services:
+
+    telegraf:
+        image: telegraf
+        volumes:
+            - /home/docker/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+
+    influxdb:
+        container_name: influxdb
+        image: influxdb
+        ports:
+           - 8083:8083
+           - 8086:8086
+        volumes:
+            - /home/docker/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+
+    grafana:
+        image: grafana/grafana
+        ports:
+            - 3000:3000
